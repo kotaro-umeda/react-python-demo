@@ -8,7 +8,7 @@ import { Button } from "../uiParts/button";
 function Weather() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { city } = useContext(TextContext);
+  const { city } = useContext<any>(TextContext);
   const cityInfo = CityList.filter((info) => {
     return info.name == city;
   });
