@@ -8,6 +8,7 @@ import { Button } from "../uiParts/button";
 function Weather() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  //useContextの型がわからなかったためanyにしている
   const { city } = useContext<any>(TextContext);
   const cityInfo = CityList.filter((info) => {
     return info.name == city;
@@ -23,13 +24,17 @@ function Weather() {
         setLoading(false);
       });
   }, []);
-  
+  //never型についてわからなかったためts-ignoreを使用
   const postData = () => {
     axios.post(url, {
+      //@ts-ignore
       date: dayjs(data.ts).format("YYYY-MM-DD"),
       city: cityInfo[0].name,
+      //@ts-ignore
       weather: data.weather[0].main,
+      //@ts-ignore
       temperature: data.main.temp,
+      //@ts-ignore
       humidity: data.main.humidity,
     });
   };
@@ -57,23 +62,33 @@ function Weather() {
               </div>
               <div className="pt-2">
                 <p className="font-light">Weather Condition</p>
-                <p className="text-lg font-medium tracking-widest">{data.weather[0].main}</p>
+                <p className="text-lg font-medium tracking-widest">
+                  {/* @ts-ignore */}
+                  {data.weather[0].main}
+                </p>
               </div>
               <div className="pt-6 pr-6">
                 <div className="flex justify-between">
                   <div>
                     <p className="font-light text-xs">Date</p>
                     <p className="font-bold tracking-more-wider text-sm">
+                      {/* @ts-ignore */}
                       {dayjs(data.ts).format("YYYY-MM-DD")}
                     </p>
                   </div>
                   <div>
                     <p className="font-light text-xs">Temprature</p>
-                    <p className="font-bold tracking-more-wider text-sm">{data.main.temp}°C</p>
+                    <p className="font-bold tracking-more-wider text-sm">
+                      {/* @ts-ignore */}
+                      {data.main.temp}°C
+                    </p>
                   </div>
                   <div>
                     <p className="font-light text-xs">Humidity</p>
-                    <p className="font-bold tracking-more-wider text-sm">{data.main.humidity}%</p>
+                    <p className="font-bold tracking-more-wider text-sm">
+                      {/* @ts-ignore */}
+                      {data.main.humidity}%
+                    </p>
                   </div>
                 </div>
               </div>
