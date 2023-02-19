@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TextContext } from "../providers/textProvider";
 import { Button } from "../uiParts/button";
-import Demo from "../uiParts/demo";
 import { PullDownCity } from "../uiParts/pullDownCity";
 import Weather from "./weather";
 import axios from "axios";
