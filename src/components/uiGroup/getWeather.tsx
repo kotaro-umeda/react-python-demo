@@ -14,7 +14,7 @@ export const GetWeather: React.FC = () => {
   const [dataInSql, setDataInSql] = useState<boolean>(false);
   const url = "http://127.0.0.1:8000/weather";
   const date = dayjs().format("YYYY-MM-DD");
-  const { city } = useContext(TextContext);
+  const { city } = useContext<any>(TextContext);
   useEffect(() => {
     axios.get(url).then((res) => {
       setWeatherData(res.data);
