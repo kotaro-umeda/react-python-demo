@@ -3,6 +3,7 @@ import { TextContext } from "../providers/textProvider";
 import { CityList } from "./cityList";
 
 export const PullDownCity = () => {
+    //useContextの型がわからなかったためanyにしている
   const { setCity } = useContext<any>(TextContext);
   const changeCity = (e: ChangeEvent<HTMLSelectElement>) => {
     setCity(e.target.value);
